@@ -60,7 +60,8 @@ resource "aws_internet_gateway" "project02-igw" {
 
 #EIP
 resource "aws_eip" "project02-eip" {
-  vpc = true
+  domain                    = "vpc"
+  instance                  = data.terraform_remote_state.project02-ec2.outputs.jenkins-id
 
   lifecycle {
     create_before_destroy = true
