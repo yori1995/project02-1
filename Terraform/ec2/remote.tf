@@ -15,12 +15,3 @@ data "terraform_remote_state" "project02-security" {
     region = "ap-northeast-2"
   }
 }
-
-data "terraform_remote_state" "project02-iam" {
-  backend = "s3"
-  config = {
-    bucket = "project02-terraform"
-    key    = "Terraform/iam/terraform.tfstate"
-    region = "ap-northeast-2"
-  }
-}
