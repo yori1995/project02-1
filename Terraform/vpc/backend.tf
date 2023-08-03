@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "project02-terraform"
+    bucket = "project02-terraform-bucket"
     key    = "Terraform/vpc/terraform.tfstate"
     region = "ap-northeast-2"
 
