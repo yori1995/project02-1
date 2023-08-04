@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "ap-northeast-2"
+}
+
 #SSH Security group
 resource "aws_security_group" "project02-ssh" {
   name        = "Project02 SSH Accept"

@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "ap-northeast-2"
+}
+
 #VPC
 resource "aws_vpc" "project02-vpc" {
   cidr_block       = "10.2.0.0/16"

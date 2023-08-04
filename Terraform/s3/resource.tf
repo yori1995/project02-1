@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "ap-northeast-2"
+}
+
 resource "aws_s3_bucket" "project02-tf" {
   bucket = "project02-terraform-bucket"
 
