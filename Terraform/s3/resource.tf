@@ -3,12 +3,12 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "project02-tf" {
-  bucket = "project02-terraform-bucket"
+  bucket = "project02-terraform-status"
 
   lifecycle {
     prevent_destroy = true
   }
-  #force_destroy = true
+  #	force_destroy = true
 
   versioning {
     enabled = true
@@ -23,7 +23,7 @@ resource "aws_s3_bucket" "project02-tf" {
   }
 
   tags = {
-    Name = "project02-terraform-bucket"
+    Name = "project02-terraform-status"
   }
 }
 

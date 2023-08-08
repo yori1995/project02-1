@@ -71,9 +71,9 @@ resource "aws_eip" "project02-eip" {
     create_before_destroy = true
   }
 
-	tags = {
-		Name = "project02-eip"
-	}
+  tags = {
+    Name = "project02-eip"
+  }
 }
 
 #NAT

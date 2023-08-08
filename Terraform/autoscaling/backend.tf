@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "project02-terraform-status"
-    key    = "Terraform/ec2/terraform.tfstate"
+    key    = "Terraform/autoscaling/terraform.tfstate"
     region = "ap-northeast-2"
 
     dynamodb_table = "project02-terraform-locks"
