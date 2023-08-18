@@ -14,6 +14,6 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-data "aws_iam_instance_profiles" "project02-role-web" {
-  role_name = "project02-role-web"
+data "aws_iam_instance_profiles" "project02-role-ec2" {
+  role_name = "project02-codedeploy-ec2-role"
 }

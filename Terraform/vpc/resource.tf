@@ -87,8 +87,8 @@ resource "aws_nat_gateway" "project02-nat" {
 }
 
 #Routing Table
-resource "aws_route_table" "project02-rt-public" {
-  vpc_id = aws_vpc.project02-vpc.id
+resource "aws_default_route_table" "project02-rt-public" {
+  default_route_table_id = aws_vpc.project02-vpc.default_route_table_id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -128,12 +128,12 @@ resource "aws_route_table" "project02-rt-private2" {
 
 resource "aws_route_table_association" "project02-rt-public1" {
   subnet_id      = aws_subnet.project02-subnet-public1.id
-  route_table_id = aws_route_table.project02-rt-public.id
+  route_table_id = aws_vpc.project02-vpc.default_route_table_id
 }
 
 resource "aws_route_table_association" "project02-rt-public2" {
   subnet_id      = aws_subnet.project02-subnet-public2.id
-  route_table_id = aws_route_table.project02-rt-public.id
+  route_table_id = aws_vpc.project02-vpc.default_route_table_id
 }
 
 resource "aws_route_table_association" "project02-rt-private1" {

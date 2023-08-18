@@ -1,5 +1,5 @@
 data "aws_iam_instance_profiles" "project02-cd-role" {
-  role_name = "project02-code-deploy-ec2-role"
+  role_name = "project02-codedeploy-ec2-role"
 }
 
 data "template_file" "web_output" {

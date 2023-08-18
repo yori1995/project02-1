@@ -1,6 +1,6 @@
 resource "aws_iam_instance_profile" "jenkins-profile" {
   name = "jenkins-profile"
-  role = data.aws_iam_instance_profiles.project02-role-web.role_name
+  role = data.aws_iam_instance_profiles.project02-role-ec2.role_name
 }
 
 resource "aws_instance" "project02-jenkins" {

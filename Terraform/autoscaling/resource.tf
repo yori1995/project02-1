@@ -4,13 +4,13 @@ provider "aws" {
 
 # AWS auto scaling group create
 resource "aws_autoscaling_group" "project02-auto" {
-  vpc_zone_identifier = [data.terraform_remote_state.project02-vpc.outputs.public-subnet2a, data.terraform_remote_state.project02-vpc.outputs.public-subnet2c]
+  vpc_zone_identifier = [data.terraform_remote_state.project02-vpc.outputs.private-subnet2a, data.terraform_remote_state.project02-vpc.outputs.private-subnet2c]
   name                = "PROJECT02-AUTOSCALING-GROUP"
   desired_capacity    = 3
   min_size            = 3
   max_size            = 3
 
-  target_group_arns = ["arn:aws:elasticloadbalancing:ap-northeast-2:257307634175:targetgroup/project02-target-group/5d1a5c22ec584628"]
+  target_group_arns = ["arn:aws:elasticloadbalancing:ap-northeast-2:257307634175:targetgroup/project02-target-group/50679348fbb51772"]
   health_check_type = "ELB"
 
   launch_template {
