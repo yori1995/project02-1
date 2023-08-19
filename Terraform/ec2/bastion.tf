@@ -1,7 +1,9 @@
+# Provider
 provider "aws" {
   region = "ap-northeast-2"
 }
 
+# Bastion Instance 생성
 resource "aws_instance" "project02-bastion" {
   ami                         = data.aws_ami.ubuntu.image_id
   instance_type               = "t2.micro"
