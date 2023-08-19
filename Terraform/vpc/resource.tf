@@ -1,8 +1,9 @@
+# PROVIDER
 provider "aws" {
   region = "ap-northeast-2"
 }
 
-#VPC
+# VPC 생성
 resource "aws_vpc" "project02-vpc" {
   cidr_block       = "10.2.0.0/16"
   instance_tenancy = "default"
@@ -12,7 +13,7 @@ resource "aws_vpc" "project02-vpc" {
   }
 }
 
-#SUBNET
+# PUBLIC SUBNET 1 생성 
 resource "aws_subnet" "project02-subnet-public1" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.101.0/24"
@@ -23,6 +24,7 @@ resource "aws_subnet" "project02-subnet-public1" {
   }
 }
 
+# PUBLIC SUBNET 2 생성 
 resource "aws_subnet" "project02-subnet-public2" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.103.0/24"
@@ -33,6 +35,7 @@ resource "aws_subnet" "project02-subnet-public2" {
   }
 }
 
+# PRIVATE SUBNET 1 생성
 resource "aws_subnet" "project02-subnet-private1" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.1.0/24"
@@ -43,6 +46,7 @@ resource "aws_subnet" "project02-subnet-private1" {
   }
 }
 
+# PRIVATE SUBNET 2 생성
 resource "aws_subnet" "project02-subnet-private2" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.3.0/24"
@@ -53,7 +57,7 @@ resource "aws_subnet" "project02-subnet-private2" {
   }
 }
 
-#IGW
+# Internet Gateway 생성
 resource "aws_internet_gateway" "project02-igw" {
   vpc_id = aws_vpc.project02-vpc.id
 
@@ -62,7 +66,7 @@ resource "aws_internet_gateway" "project02-igw" {
   }
 }
 
-#EIP
+# 탄력적 IP 생성
 resource "aws_eip" "project02-eip" {
   domain     = "vpc"
   depends_on = ["aws_internet_gateway.project02-igw"]
@@ -76,7 +80,7 @@ resource "aws_eip" "project02-eip" {
   }
 }
 
-#NAT
+# NAT Gateway 생성성
 resource "aws_nat_gateway" "project02-nat" {
   allocation_id = aws_eip.project02-eip.id
   subnet_id     = aws_subnet.project02-subnet-public1.id
@@ -86,7 +90,7 @@ resource "aws_nat_gateway" "project02-nat" {
   }
 }
 
-#Routing Table
+# Public Routing Table 생성
 resource "aws_default_route_table" "project02-rt-public" {
   default_route_table_id = aws_vpc.project02-vpc.default_route_table_id
 
@@ -100,6 +104,7 @@ resource "aws_default_route_table" "project02-rt-public" {
   }
 }
 
+# Private Routing Table 1 생성
 resource "aws_route_table" "project02-rt-private1" {
   vpc_id = aws_vpc.project02-vpc.id
 
@@ -113,6 +118,7 @@ resource "aws_route_table" "project02-rt-private1" {
   }
 }
 
+# Private Routing Table 2 생성
 resource "aws_route_table" "project02-rt-private2" {
   vpc_id = aws_vpc.project02-vpc.id
 
@@ -126,21 +132,25 @@ resource "aws_route_table" "project02-rt-private2" {
   }
 }
 
+# Public Routing Table Subnet 연결
 resource "aws_route_table_association" "project02-rt-public1" {
   subnet_id      = aws_subnet.project02-subnet-public1.id
   route_table_id = aws_vpc.project02-vpc.default_route_table_id
 }
 
+# Public Routing Table Subnet 연결
 resource "aws_route_table_association" "project02-rt-public2" {
   subnet_id      = aws_subnet.project02-subnet-public2.id
   route_table_id = aws_vpc.project02-vpc.default_route_table_id
 }
 
+# Private Routing Table Subnet 연결
 resource "aws_route_table_association" "project02-rt-private1" {
   subnet_id      = aws_subnet.project02-subnet-private1.id
   route_table_id = aws_route_table.project02-rt-private1.id
 }
 
+# Private Routing Table Subnet 연결
 resource "aws_route_table_association" "project02-rt-private2" {
   subnet_id      = aws_subnet.project02-subnet-private2.id
   route_table_id = aws_route_table.project02-rt-private2.id
