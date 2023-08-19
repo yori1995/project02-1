@@ -1,3 +1,4 @@
+# VPC Remote
 data "terraform_remote_state" "project02-vpc" {
   backend = "s3"
   config = {
@@ -7,6 +8,7 @@ data "terraform_remote_state" "project02-vpc" {
   }
 }
 
+# Launch Template Remote
 data "terraform_remote_state" "project02-launch" {
   backend = "s3"
   config = {
