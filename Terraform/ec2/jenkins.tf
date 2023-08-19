@@ -1,8 +1,10 @@
+# IAM Profile 생성
 resource "aws_iam_instance_profile" "jenkins-profile" {
   name = "jenkins-profile"
   role = data.aws_iam_instance_profiles.project02-role-ec2.role_name
 }
 
+# Jenkins Instance 생성
 resource "aws_instance" "project02-jenkins" {
   ami                         = data.aws_ami.ubuntu.image_id
   instance_type               = "t3.large"
