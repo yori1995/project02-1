@@ -1,8 +1,9 @@
+# Provider
 provider "aws" {
   region = "ap-northeast-2"
 }
 
-# AWS auto scaling group create
+# AWS auto scaling group 생성
 resource "aws_autoscaling_group" "project02-auto" {
   vpc_zone_identifier = [data.terraform_remote_state.project02-vpc.outputs.private-subnet2a, data.terraform_remote_state.project02-vpc.outputs.private-subnet2c]
   name                = "PROJECT02-AUTOSCALING-GROUP"
