@@ -1,7 +1,9 @@
+# Provider
 provider "aws" {
   region = "ap-northeast-2"
 }
 
+# Application Load Balance 생성
 resource "aws_lb" "project02-lb" {
   name               = "project02-lb"
   internal           = false
