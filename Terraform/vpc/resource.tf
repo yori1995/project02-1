@@ -1,4 +1,4 @@
-# PROVIDER
+# Provider
 provider "aws" {
   region = "ap-northeast-2"
 }
@@ -13,7 +13,7 @@ resource "aws_vpc" "project02-vpc" {
   }
 }
 
-# PUBLIC SUBNET 1 생성 
+# Public Subnet 1 생성 
 resource "aws_subnet" "project02-subnet-public1" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.101.0/24"
@@ -24,7 +24,7 @@ resource "aws_subnet" "project02-subnet-public1" {
   }
 }
 
-# PUBLIC SUBNET 2 생성 
+# Public Subnet 2 생성 
 resource "aws_subnet" "project02-subnet-public2" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.103.0/24"
@@ -35,7 +35,7 @@ resource "aws_subnet" "project02-subnet-public2" {
   }
 }
 
-# PRIVATE SUBNET 1 생성
+# Private Subnet 1 생성
 resource "aws_subnet" "project02-subnet-private1" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.1.0/24"
@@ -46,7 +46,7 @@ resource "aws_subnet" "project02-subnet-private1" {
   }
 }
 
-# PRIVATE SUBNET 2 생성
+# Private Subnet 2 생성
 resource "aws_subnet" "project02-subnet-private2" {
   vpc_id            = aws_vpc.project02-vpc.id
   cidr_block        = "10.2.3.0/24"
