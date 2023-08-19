@@ -7,15 +7,20 @@ provider "aws" {
 resource "aws_s3_bucket" "project02-tf" {
   bucket = "project02-terraform-status"
 
+# 강제 삭제 방지
 # lifecycle {
 #    prevent_destroy = true
 #  }
+
+# 강제 삭제 가능
   force_destroy = true
 
+# 버전 관리
   versioning {
     enabled = true
   }
 
+# 알고리즘 설정
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
