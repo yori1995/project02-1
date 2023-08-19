@@ -1,3 +1,4 @@
+# VPC Terraform State Remote
 data "terraform_remote_state" "project02-vpc" {
   backend = "s3"
   config = {
