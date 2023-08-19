@@ -1,8 +1,9 @@
+# Provider
 provider "aws" {
   region = "ap-northeast-2"
 }
 
-#SSH Security group
+# SSH Security group 생성
 resource "aws_security_group" "project02-ssh" {
   name        = "Project02 SSH Accept"
   description = "for SSH Accept"
@@ -27,7 +28,7 @@ resource "aws_security_group" "project02-ssh" {
   }
 }
 
-#WEB Security group
+# WEB Security group 생성성
 resource "aws_security_group" "project02-web" {
   name        = "Project02 WEB Accept"
   description = "for Web Accept"
@@ -52,7 +53,7 @@ resource "aws_security_group" "project02-web" {
   }
 }
 
-#ALB Security group
+# ALB Secur성
 resource "aws_security_group" "project02-alb" {
   name        = "Project02 ALB Accept"
   description = "for ALB Accept"
