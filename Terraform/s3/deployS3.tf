@@ -30,7 +30,7 @@ resource "aws_s3_bucket" "project02-tf-d" {
 }
 
 # S3 bucket 접근 권한 설정
-resource "aws_s3_bucket_public_access_block" "public_access" {
+resource "aws_s3_bucket_public_access_block" "public_access_d" {
   bucket                  = aws_s3_bucket.project02-tf-d.id
   block_public_acls       = true
   block_public_policy     = true
